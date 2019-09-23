@@ -5,10 +5,12 @@ const app = express();
 const PORT = 3003;
 
 const bioController = require('./controllers/bioController');
+const imageController = require('./controllers/imageController');
 
 // MIDDLEWARE
 app.use(express.json());
 app.use('/bakery', bioController);
+app.use('/bakery', imageController);
 
 // MONGO
 mongoose.connection.on('error', err =>
