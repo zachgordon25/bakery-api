@@ -31,4 +31,14 @@ bio.delete('/:id', (req, res) => {
     res.status(200).json(deletedBio);
   });
 });
+
+// UPDATED
+bio.put('/:id', (req, res) => {
+  Bio.findByIdAndUpdate(req.params.id, req.body, (err, updatedBio) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+    }
+    res.status(200).send({ updatedBio: updatedBio });
+  });
+});
 module.exports = bio;
