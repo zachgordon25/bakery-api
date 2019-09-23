@@ -1,11 +1,11 @@
+// DEPENDENCIES
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const PORT = 3003;
 
-app.get('/bakery', (req, res) => {
-  res.send('bakery linked');
-});
+const bioController = require('./controllers/bioController');
+app.use('/bakery', bioController);
 
 // MONGO
 mongoose.connection.on('error', err =>
