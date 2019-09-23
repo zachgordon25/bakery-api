@@ -1,14 +1,33 @@
 // DEPENDENCIES
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
 const PORT = 3003;
 
 const bioController = require('./controllers/bioController');
+const imageController = require('./controllers/imageController');
+
+// CORS
+const whitelist = [
+  'http://localhost:3000',
+  'https://fathomless-sierra-68956.herokuapp.com'
+];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+app.use(cors());
 
 // MIDDLEWARE
 app.use(express.json());
 app.use('/bakery', bioController);
+app.use('/bakery', imageController);
 
 // MONGO
 mongoose.connection.on('error', err =>
