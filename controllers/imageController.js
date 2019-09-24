@@ -12,6 +12,17 @@ images.get('/', (req, res) => {
   });
 });
 
+// SEED
+// bio.get('/seed/newimg/viaseedfile', (req, res) => {
+//   Images.insertMany(imgSeed, (err, img) => {
+//    if (err) {
+//      console.error(err);
+//    } else {
+//      res.send(img);
+//     }
+//   });
+// });
+
 // CREATE
 images.post('/', (req, res) => {
   Image.create(req.body, (err, createdImage) => {

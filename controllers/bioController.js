@@ -12,6 +12,17 @@ bio.get('/about', (req, res) => {
   });
 });
 
+// SEED
+// bio.get('/about/seed/newbio/viaseedfile', (req, res) => {
+//   Bio.insertMany(bioSeed, (err, bio) => {
+//    if (err) {
+//     console.error(err);
+//    } else {
+//     res.send(bio);
+//     }
+//   });
+// });
+
 // CREATE
 bio.post('/about', (req, res) => {
   Bio.create(req.body, (err, createdBio) => {
