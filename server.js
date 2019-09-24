@@ -12,6 +12,7 @@ const secret = process.env.SECRET;
 const bioController = require('./controllers/bioController');
 const imageController = require('./controllers/imageController');
 const usersController = require('./controllers/usersController');
+const SessionsController = require('./controllers/SessionsController');
 
 // CORS
 const whitelist = [
@@ -40,9 +41,10 @@ app.use(
   })
 );
 app.use(express.json());
-app.use('/users', usersController);
 app.use('/bakery', bioController);
 app.use('/bakery', imageController);
+app.use('/users', usersController);
+app.use('/sessions', SessionsController);
 
 // MONGO
 mongoose.connection.on('error', err =>
