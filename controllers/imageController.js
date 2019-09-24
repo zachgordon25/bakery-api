@@ -1,6 +1,7 @@
 const express = require('express');
 const images = express.Router();
 const Image = require('../models/imageModel');
+const imageSeed = require('../models/imageSeed');
 
 // INDEX
 images.get('/', (req, res) => {
@@ -13,12 +14,12 @@ images.get('/', (req, res) => {
 });
 
 // SEED
-// bio.get('/seed/newimg/viaseedfile', (req, res) => {
-//   Images.insertMany(imgSeed, (err, img) => {
-//    if (err) {
-//      console.error(err);
-//    } else {
-//      res.send(img);
+// images.get('/seed/newimg/viaseedfile', (req, res) => {
+//   Image.insertMany(imageSeed, (err, img) => {
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       res.send(img);
 //     }
 //   });
 // });

@@ -1,6 +1,7 @@
 const express = require('express');
 const bio = express.Router();
 const Bio = require('../models/bioModel');
+const bioSeed = require('../models/bioSeed');
 
 // INDEX
 bio.get('/about', (req, res) => {
@@ -15,10 +16,10 @@ bio.get('/about', (req, res) => {
 // SEED
 // bio.get('/about/seed/newbio/viaseedfile', (req, res) => {
 //   Bio.insertMany(bioSeed, (err, bio) => {
-//    if (err) {
-//     console.error(err);
-//    } else {
-//     res.send(bio);
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       res.send(bio);
 //     }
 //   });
 // });
