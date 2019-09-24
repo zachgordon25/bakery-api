@@ -1,6 +1,6 @@
 // DEPENDENCIES
-const express = require('express');
 require('dotenv').config();
+const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session');
@@ -11,6 +11,7 @@ const secret = process.env.SECRET;
 
 const bioController = require('./controllers/bioController');
 const imageController = require('./controllers/imageController');
+const usersController = require('./controllers/usersController');
 
 // CORS
 const whitelist = [
@@ -39,6 +40,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use('/users', usersController);
 app.use('/bakery', bioController);
 app.use('/bakery', imageController);
 
