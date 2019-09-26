@@ -1,16 +1,23 @@
 // DEPENDENCIES
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const app = express();
-const PORT = 3003;
+const port = process.env.PORT || 3003;
+const secret = process.env.SECRET;
 
 const bioController = require('./controllers/bioController');
 const imageController = require('./controllers/imageController');
+const usersController = require('./controllers/usersController');
+const SessionsController = require('./controllers/SessionsController');
 
 // CORS
 const whitelist = [
   'http://localhost:3000',
+  'http://localhost:3003',
   'https://fathomless-sierra-68956.herokuapp.com'
 ];
 const corsOptions = {
@@ -25,9 +32,19 @@ const corsOptions = {
 app.use(cors());
 
 // MIDDLEWARE
+app.use(
+  session({
+    secret: secret,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
 app.use(express.json());
 app.use('/bakery', bioController);
 app.use('/bakery', imageController);
+app.use('/users', usersController);
+app.use('/sessions', SessionsController);
 
 // MONGO
 mongoose.connection.on('error', err =>
@@ -41,6 +58,6 @@ mongoose.connection.once('open', () => {
 });
 
 // LISTENER
-app.listen(PORT, () => {
-  console.log('🎉🎊', 'celebrations happening on port', PORT, '🎉🎊');
+app.listen(port, () => {
+  console.log('🎉🎊', 'celebrations happening on port', port, '🎉🎊');
 });
