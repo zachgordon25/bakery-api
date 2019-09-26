@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const users = express.Router();
 const User = require('../models/usersModel');
+const userSeed = require('../models/userSeed');
 
 users.get('/all', (req, res) => {
   User.find({}, (err, foundUsers) => {
@@ -12,6 +13,17 @@ users.get('/all', (req, res) => {
       foundUsers: foundUsers,
       currentUser: req.session.currentUser
     });
+  });
+});
+
+// SEED
+bio.get('/user/seed/newuser/viaseedfile', (req, res) => {
+  User.insertMany(userSeed, (err, user) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.redirect('/users/all');
+    }
   });
 });
 

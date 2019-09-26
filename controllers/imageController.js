@@ -14,15 +14,15 @@ images.get('/', (req, res) => {
 });
 
 // SEED
-// images.get('/seed/newimg/viaseedfile', (req, res) => {
-//   Image.insertMany(imageSeed, (err, img) => {
-//     if (err) {
-//       console.error(err);
-//     } else {
-//       res.send(img);
-//     }
-//   });
-// });
+images.get('/seed/newimg/viaseedfile', (req, res) => {
+  Image.insertMany(imageSeed, (err, img) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.redirect('/');
+    }
+  });
+});
 
 // CREATE
 images.post('/', (req, res) => {
