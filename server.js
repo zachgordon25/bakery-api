@@ -18,7 +18,7 @@ const SessionsController = require('./controllers/SessionsController');
 const whitelist = [
   'http://localhost:3000',
   'http://localhost:3003',
-  'https://fathomless-sierra-68956.herokuapp.com'
+  'https://migdalias-confections.herokuapp.com'
 ];
 const corsOptions = {
   origin: (origin, callback) => {
