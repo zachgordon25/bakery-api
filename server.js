@@ -47,7 +47,7 @@ app.use('/users', usersController);
 app.use('/sessions', SessionsController);
 
 app.get('/', (req, res) => {
-  res.redirect('/bakery');
+  res.send('/bakery');
 });
 
 // MONGO
