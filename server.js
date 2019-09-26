@@ -47,14 +47,14 @@ app.use('/users', usersController);
 app.use('/sessions', SessionsController);
 
 // MONGO
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/DB_NAME';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connection.on('error', err =>
   console.log(err.message + ' is Mongod not running?')
 );
 mongoose.connection.on('disconnected', () => console.log('mongo disconnected'));
 
-mongoose.connect('mongodb://localhost:27017/bakery', { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
   console.log('connected to mongoose...');
 });
