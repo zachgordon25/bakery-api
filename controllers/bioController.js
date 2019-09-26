@@ -19,7 +19,7 @@ bio.get('/about/seed/newbio/viaseedfile', (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      res.redirect('/about');
+      res.redirect('/bakery/about');
     }
   });
 });
