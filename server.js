@@ -6,7 +6,7 @@ const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const app = express();
-const port = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3003;
 const secret = process.env.SECRET;
 
 const bioController = require('./controllers/bioController');
@@ -60,6 +60,6 @@ mongoose.connection.once('open', () => {
 });
 
 // LISTENER
-app.listen(port, () => {
-  console.log('🎉🎊', 'celebrations happening on port', port, '🎉🎊');
+app.listen(PORT, () => {
+  console.log('🎉🎊', 'celebrations happening on port', PORT, '🎉🎊');
 });
