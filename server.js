@@ -12,7 +12,7 @@ const secret = process.env.SECRET;
 const bioController = require('./controllers/bioController');
 const imageController = require('./controllers/imageController');
 const usersController = require('./controllers/usersController');
-const SessionsController = require('./controllers/SessionsController');
+const SessionsController = require('./controllers/sessionsController');
 
 // CORS
 const whitelist = [
@@ -46,9 +46,9 @@ app.use('/bakery', imageController);
 app.use('/users', usersController);
 app.use('/sessions', SessionsController);
 
-app.get('/', (req, res) => {
-  res.send('heroku is linked');
-});
+// app.get('/', (req, res) => {
+//   res.send('heroku is linked');
+// });
 
 // MONGO
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/bakery';
