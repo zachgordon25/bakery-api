@@ -46,9 +46,9 @@ app.use('/bakery', imageController);
 app.use('/users', usersController);
 app.use('/sessions', SessionsController);
 
-// app.get('/', (req, res) => {
-//   res.send('heroku is linked');
-// });
+app.get('/', (req, res) => {
+  res.redirect('/bakery');
+});
 
 // MONGO
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/bakery';
