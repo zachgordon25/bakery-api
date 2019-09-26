@@ -44,10 +44,10 @@ app.use(express.json());
 app.use('/bakery', bioController);
 app.use('/bakery', imageController);
 app.use('/users', usersController);
-app.use('/sessions', SessionsController);
+app.use('/sessions', sessionsController);
 
 app.get('/', (req, res) => {
-  res.send('/bakery');
+  res.redirect('/bakery');
 });
 
 // MONGO
