@@ -47,6 +47,8 @@ app.use('/users', usersController);
 app.use('/sessions', SessionsController);
 
 // MONGO
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/DB_NAME';
+
 mongoose.connection.on('error', err =>
   console.log(err.message + ' is Mongod not running?')
 );
