@@ -17,7 +17,7 @@ users.get('/all', (req, res) => {
 });
 
 // SEED
-bio.get('/user/seed/newuser/viaseedfile', (req, res) => {
+users.get('/user/seed/newuser/viaseedfile', (req, res) => {
   User.insertMany(userSeed, (err, user) => {
     if (err) {
       console.error(err);
