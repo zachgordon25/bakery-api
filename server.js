@@ -42,9 +42,13 @@ app.use(
 );
 app.use(express.json());
 app.use('/bakery', bioController);
-// app.use(imageController);
+app.use('/bakery', imageController);
 app.use('/users', usersController);
 app.use('/sessions', SessionsController);
+
+app.get('/', (req, res) => {
+  res.redirect('/bakery');
+});
 
 // MONGO
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/bakery';
