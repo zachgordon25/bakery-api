@@ -42,7 +42,7 @@ app.use(
 );
 app.use(express.json());
 app.use('/bakery', bioController);
-app.use(imageController);
+// app.use(imageController);
 app.use('/users', usersController);
 app.use('/sessions', SessionsController);
 
