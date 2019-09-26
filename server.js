@@ -12,7 +12,7 @@ const secret = process.env.SECRET;
 const bioController = require('./controllers/bioController');
 const imageController = require('./controllers/imageController');
 const usersController = require('./controllers/usersController');
-const SessionsController = require('./controllers/sessionsController');
+const sessionsController = require('./controllers/sessionsController');
 
 // CORS
 const whitelist = [
