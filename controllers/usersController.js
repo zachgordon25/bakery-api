@@ -18,11 +18,11 @@ users.get('/all', (req, res) => {
 
 // SEED
 users.get('/user/seed/newuser/viaseedfile', (req, res) => {
+  req.body.password = bcrypt.hashSync(
+    req.body.password,
+    bcrypt.genSaltSync(10)
+  );
   User.insertMany(userSeed, (err, user) => {
-    req.body.password = bcrypt.hashSync(
-      req.body.password,
-      bcrypt.genSaltSync(10)
-    );
     if (err) {
       console.error(err);
     } else {
@@ -32,13 +32,13 @@ users.get('/user/seed/newuser/viaseedfile', (req, res) => {
 });
 
 // DROP
-users.get(
-  '/dropdatabase/cannotundo/areyoursure/reallysure/okthen',
-  (req, res) => {
-    User.collection.drop();
-    res.redirect('/users/all');
-  }
-);
+// users.get(
+//   '/dropdatabase/cannotundo/areyoursure/reallysure/okthen',
+//   (req, res) => {
+//     User.collection.drop();
+//     res.redirect('/users/all');
+//   }
+// );
 
 users.post('/', (req, res) => {
   req.body.password = bcrypt.hashSync(
